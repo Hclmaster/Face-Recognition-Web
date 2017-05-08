@@ -1,0 +1,157 @@
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>人脸识别</title>
+
+  <link rel="stylesheet" href="download/normalize.min.css">
+  <link rel="stylesheet prefetch" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="css/nav-style.css">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <link rel="stylesheet" type="text/css" href="css/track.css">
+
+  <link rel="stylesheet" href="css/uploadimages.css">
+<style type="text/css">
+.part2,.part3{
+    display: none;
+  }
+
+
+</style>
+
+</head>
+
+<body>
+
+  <!-- /header -->
+  <header id="header">
+    <a class="site-logo" href="index.html"><span><img src="images/logo4.png"></span> 人脸识别 • Face Recognition</a>
+
+    <nav role="navigation" id="nav-main" class="okayNav">
+      <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="about.html">关于我们</a></li>
+        <li><a href="contact.html">联系我们</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <main>
+    <div class="imgs row">
+      <div class="col-md-9"></div>
+      <div class="track-area col-md-3 col-sm-3 col-xs-3">
+        <p class="track-txt">人像建模</p>
+        <p class="track-txt">Portrait Modeling</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <section class="part1">
+          <div class="logohere_modeling"></div>
+           <p class="info">人像建模</p>
+          <p class="info">利用人像关键点追踪技术</p>
+          <p class="info">当指定的人像在摄像头前通过拍摄取得需要图像</p>
+          <p class="info">自动地生成人脸模型</p>
+          <span id="begin" class="track-button" onclick="showPart2()">开始体验</span>
+        </section>
+        <section id="uploadImg" class="part2">
+        	<form id="form2" method="post" enctype="multipart/form-data">
+	        	<div>
+	            	<div>
+	              		<div class="containers">
+	                		<div class="imageWrapper">
+	                  			<img class="image">
+	                		</div>
+	              		</div>
+	              		<button class="file-upload" style="display:none">
+	                		<input id="first" type="file" name="file" class="file-input" style="display:none">
+	              		</button>
+	              		<span class="track-button" onclick="upload('1')">选择一张图片</span>
+	            	</div>
+	          </div>
+        	</form>
+          <section class="part3">
+			<label class="info">建模结果：</label><label class="info" id="resinfo" name="resinfo"></label>
+			<div class="containers">
+                <div class="imageWrapper">
+                  <img id="resImg" class="image">
+                </div>
+            </div>
+		  </section>
+          <span class="track-button" onclick="getResult()">开始建模</span>
+        </section>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </main>
+
+  <footer>
+    <p class="footerinfo" style="margin-top:10px;">Posted by: 吃了这个包子</p>
+    <p class="footerinfo">Members：林成虹、林紫秀、陈彧、陈子安、周垤飞</p>
+  </footer>
+
+
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js'></script>
+  <script src='https://cdn.rawgit.com/VPenkov/okayNav/master/app/js/jquery.okayNav.js'></script>
+  <script src="js/index.js"></script>
+  <script src="js/jquery.form.js"></script>
+
+  <script type="text/javascript">
+
+    function showPart2(){
+      $("#uploadImg").css("display","block");
+      $("#begin").css("display","none");
+    }
+
+    function upload(n){
+      if(n==1){
+        $("#first").click();
+      }
+      else{
+        $("#second").click();
+      }
+    }
+
+    var files;
+    function getResult(){
+    	$(".part3").css("display","block");
+    	var options={
+			url:"portraitModel_getModel",
+			type:"POST",
+			data:{
+				'file':files
+			},
+			dataType:"json",
+			success:function(data){
+				$("#resinfo").html(data.result[0]);
+				$("#resImg").attr("src",data.result[1]);
+			},
+			error:function(XmlHttpRequest, textStatus, errorThrown){
+				alert("图片太大，上传失败");
+			}
+    	}
+    	$("#form2").ajaxSubmit(options);//绑定页面中form表单的id
+    }
+
+    $('.file-input').change(function(){
+      files=this.files[0];
+      var curElement = $(this).parent().parent().find('.image');
+      console.log(curElement);
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+          // get loaded data and render thumbnail.
+          curElement.attr('src', e.target.result);
+      };
+      reader.readAsDataURL(this.files[0]);
+    });
+  </script>
+
+</body>
+</html>
+

@@ -1,0 +1,157 @@
+.about{
+    background:#f7f7f3;
+    padding:2em 0;
+}
+
+h3.top-title{
+    font-size:2.5em;
+    color:#000;
+    font-weight:800;
+    text-transform:uppercase;
+    text-align:center;
+    margin:1em 0 0.3em 0;
+}
+.about h4{
+    font-size:1.8em;
+    font-weight: 700;
+    text-align:center;
+    margin-bottom:1em;
+}
+.about p{
+    width:80%;
+    margin:0 auto;
+    font-size:18px;
+    line-height:1.8em;
+    font-weight:400;
+    margin-bottom:1em;
+}
+.about-row{
+    background:#eaeaea;
+    margin:2em 0;
+    border-radius:8px;
+    -webkit-border-radius:8px;
+    -o-border-radius:8px;
+    -ms-border-radius:8px;
+    -moz-border-radius:8px;
+}
+.about-row-column{
+    text-align: left;
+    padding: 0;
+}
+.about-row-column img{
+    width:100%;
+}
+.about-column{
+    padding:1em 2em;
+    text-align:left;
+}
+.about-column h3{
+    font-size:2em;
+    font-weight:400;
+    text-align:left;
+}
+.about-column h4{
+    text-align:left;
+    font-size:1.5em;
+    font-weight:400;
+}
+.about-column h5{
+    text-align:left;
+    font-size:1.3em;
+    font-weight:400;
+}
+.about-column p{
+    text-align:left;
+    width:90%;
+    font-size:1.2em;
+    line-height:1.5em;
+    color:#000;
+    margin:0 0 1em 0;
+}
+/*---- Progress Bar ---*/
+#progressbar {
+    width: 50%;
+    height: 20px;
+    background-color: #fff;
+    padding: 0px;
+    margin: .6em 0;
+    clear: both;
+}
+
+#progress {
+    background: #77b4be; /*-- Color of the bar --*/
+    height: 20px;
+    width: 0%;
+    max-width: 100%;
+    float: left;
+    -webkit-animation: progress 2s 1 forwards;
+    -moz-animation: progress 2s 1 forwards;
+    -ms-animation: progress 2s 1 forwards;
+    animation: progress 2s 1 forwards;
+    text-align:center;
+}
+
+#pbaranim {
+    height: 15px;
+    width: 100%;
+    overflow: hidden;
+    background: url('http://www.cssdeck.com/uploads/media/items/7/7uo1osj.gif') repeat-x;
+    -moz-opacity: 0.25;
+    -khtml-opacity: 0.25;
+    opacity: 0.25;
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25);
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=25);
+    filter: alpha(opacity=25);
+    color:#000;
+    font-weight:bolder;
+}
+
+@-webkit-keyframes progress {
+    from { }
+
+    to { width: 36% }
+}
+
+@-moz-keyframes progress {
+    from { }
+
+    to { width: 36% }
+}
+
+@-ms-keyframes progress {
+    from { }
+
+    to { width: 36% }
+}
+
+@keyframes progress {
+    from { }
+
+    to { width: 36% }
+}
+/*---- Progress Bar ---*/
+ul.social{
+    padding:0;
+    margin-top:1em;
+}
+ul.social li{
+    display:inline-block;
+}
+ul.social li i{
+    width:25px;
+    height:25px;
+    display: inline-block;
+    cursor: pointer;
+}
+ul.social li i.fa{
+    background-position:0px 0px;
+}
+ul.social li i.tw{
+    background-position:-26px 0px;
+}
+ul.social li i.in{
+    background-position:-53px 0px;
+}
+ul.social li i.pw{
+    background-position:-81px 0px;
+}

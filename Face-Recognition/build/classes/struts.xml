@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.custom.i18n.resources" value="message" />
+	<constant name="struts.i18n.encoding" value="gbk"></constant>
+	<constant name="struts.multipart.maxSize" value="10000000"/> 
+	<!-- 上传过程中临时文件存放目录 -->
+	<constant name="struts.multipart.saveDir" value="/tempUpload"></constant>
+	
+	<package name="default" namespace="/" extends="struts-default,json-default">
+		<action name="faceComparison_*" class="com.action.FaceComparisonAction" method="{1}">
+			<result type="json">
+				<param name="root">responseJson</param>
+			</result>
+			<!-- 定义文件上传拦截器 -->
+			<interceptor-ref name="fileUpload">
+				<!-- 设置文件上传大小 -->
+				<param name="maximumSize">10000000</param>
+			</interceptor-ref>
+			<!-- 自定义了拦截器后必手动定义默认的拦截器，否则默认的拦截器不会被执行 -->
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			
+		</action>
+		
+		<action name="portraitModel_*" class="com.action.PortraitModelAction" method="{1}">
+			<result type="json">
+				<param name="root">responseJson</param>
+			</result>
+			<!-- 定义文件上传拦截器 -->
+			<interceptor-ref name="fileUpload">
+				<!-- 设置文件上传大小 -->
+				<param name="maximumSize">10000000</param>
+			</interceptor-ref>
+			<!-- 自定义了拦截器后必手动定义默认的拦截器，否则默认的拦截器不会被执行 -->
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			
+		</action>
+		
+		<action name="faceIdentify_*" class="com.action.FaceIdentifyAction" method="{1}">
+			<result type="json">
+				<param name="root">responseJson</param>
+			</result>
+			<!-- 定义文件上传拦截器 -->
+			<interceptor-ref name="fileUpload">
+				<!-- 设置文件上传大小 -->
+				<param name="maximumSize">10000000</param>
+			</interceptor-ref>
+			<!-- 自定义了拦截器后必手动定义默认的拦截器，否则默认的拦截器不会被执行 -->
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			
+		</action>
+	</package>
+
+</struts>

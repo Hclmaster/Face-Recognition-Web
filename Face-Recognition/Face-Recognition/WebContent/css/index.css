@@ -1,0 +1,62 @@
+h3 {
+  display: inline-block;
+  padding: 10px;
+  background: #B9121B;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.full-screen {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+.carousel .carousel-indicators .carousel-inner .carousel-caption{
+  height: 400px !important;
+}
+div .item{
+  height: 400px !important;
+}
+
+.carousel-caption{
+  top: 250px;
+}
+
+footer{
+	height: 70px;
+	width: 100%;
+	position: absolute;
+	bottom:0;
+  background-color: #dce5e4;
+}
+
+.footerinfo{
+  color: #5d5d5d;
+  font-weight: bold;
+  text-align: center;
+}
+
+.menus{
+  margin-top: 30px;
+  height: 200px;
+}
+
+.face-fun{
+  height: 200px;
+}
+
+.face-span{
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.face-icon{
+  width: 50%;
+  
+}
+
+.mya{
+  font-size: 26px;
+}

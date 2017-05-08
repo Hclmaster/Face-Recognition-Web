@@ -1,0 +1,104 @@
+	<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>tracking.js - face with camera</title>
+  <link rel="stylesheet" href="assets/demo.css">
+  <link rel="stylesheet" type="text/css" href="../css/track.css">
+  <script src="../build/tracking-min.js"></script>
+  <script src="../build/data/face-min.js"></script>
+  <script src="../node_modules/dat.gui/build/dat.gui.min.js"></script>
+  <script src="assets/stats.min.js"></script>
+
+  <style>
+  video,#canvas {
+    margin-left: 0px;
+    margin-top: 0px;
+    position: absolute;
+  }
+  #begin,#canvas1{
+	margin-left:460px;  
+  }
+  </style>
+</head>
+<body>
+
+  <!-- /header -->
+  <!-- <header id="header">
+    <a class="site-logo" href="index.html"><span><img src="images/logo4.png"></span> 人脸识别 • Face Recognition</a>
+
+    <nav role="navigation" id="nav-main" class="okayNav">
+      <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="#">关于我们</a></li>
+        <li><a href="#">联系我们</a></li>
+      </ul>
+    </nav>
+  </header> -->
+  <!-- <div class="demo-title">
+    <p><a href="http://trackingjs.com" target="_parent">tracking.js</a> － get user's webcam and detect faces</p>
+  </div> -->
+
+  <div class="demo-frame">
+    <div class="demo-container">
+      <video id="video" width="440" height="340" preload autoplay loop muted></video>
+      <canvas id="canvas" width="440" height="340"></canvas>
+      <span id="begin" class="track-button" onclick="getPhoto()">拍照</span>
+      <canvas id="canvas1" width="440" height="340"></canvas><hr />
+    </div>
+    
+    
+  </div>
+  
+  
+
+  <script>
+  var canvas1 = document.getElementById('canvas1');  
+  var context1 = canvas1.getContext('2d');
+  
+//拍照  
+  function getPhoto() {  
+      context1.drawImage(video, 0, 0,220,170); //将video对象内指定的区域捕捉绘制到画布上指定的区域，实现拍照。  
+  } 
+    window.onload = function() {
+      var video = document.getElementById('video');
+      // 获取到canvas元素
+      var canvas = document.getElementById('canvas');
+      // 获取到canvas中的画图环境
+      var context = canvas.getContext('2d');
+      context.lineWidth=3;
+
+
+      var tracker = new tracking.ObjectTracker('face');
+      tracker.setInitialScale(4);
+      tracker.setStepSize(2);
+      tracker.setEdgesDensity(0.1);
+
+      tracking.track('#video', tracker, { camera: true });
+
+      tracker.on('track', function(event) {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        event.data.forEach(function(rect) {
+          context.strokeStyle = '#fffa00';
+          context.strokeRect(rect.x, rect.y, rect.width, rect.height);
+          context.font = '11px Helvetica';
+          context.fillStyle = "#fff";
+          context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
+          context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
+
+          // 进行新绘制图像的操作
+          //context.drawImage(video, rect.x, rect.y, rect.width);
+
+        });
+      });
+
+      var gui = new dat.GUI();
+      gui.add(tracker, 'edgesDensity', 0.1, 0.5).step(0.01);
+      gui.add(tracker, 'initialScale', 1.0, 10.0).step(0.1);
+      gui.add(tracker, 'stepSize', 1, 5).step(0.1);
+    };
+  </script>
+
+</body>
+</html>

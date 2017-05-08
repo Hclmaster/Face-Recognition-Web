@@ -1,0 +1,79 @@
+.imgs{
+	height: 400px;
+	background: url("../images/0.jpg");
+}
+.track-area{
+    margin-top: 10%;
+}
+.track-txt{
+	font-size: 3.5rem;
+    color: #fff;
+    line-height: 1.3;
+    text-align: justify;
+}
+section{
+	padding-bottom: 20px;
+    padding-top: 10px;
+    position: relative;
+    text-align: center;
+}
+.logohere_track{
+	height: 100px;
+    background: url("../images/renxianggenzong.png") no-repeat 50%;
+    background-size: contain;
+    margin-bottom: 15px;
+}
+.logohere_detection{
+    height: 100px;
+    background: url("../images/huotijiance.png") no-repeat 50%;
+    background-size: contain;
+    margin-bottom: 15px;
+}
+.logohere_modeling{
+    height: 100px;
+    background: url("../images/renxiangjianmo.png") no-repeat 50%;
+    background-size: contain;
+    margin-bottom: 15px;
+}
+.logohere_contrast{
+    height: 100px;
+    background: url("../images/renlianbidui.png") no-repeat 50%;
+    background-size: contain;
+    margin-bottom: 15px;
+}
+.logohere_capture{
+    height: 100px;
+    background: url("../images/renlianbuhuo.png") no-repeat 50%;
+    background-size: contain;
+    margin-bottom: 15px;
+}
+.logohere_search{
+    height: 100px;
+    background: url("../images/renliansousuo.png") no-repeat 50%;
+    background-size: contain;
+    margin-bottom: 15px;
+}
+.info{
+  font-size: 2rem;
+  color: #5d5d5d;
+  line-height: 1.5;
+  text-align: center;
+}
+.track-button{
+	display: inline-block;
+    position: relative;
+    width: 160px;
+    height: 40px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    line-height: 40px;
+    margin-top: 15px;
+    background: url(../images/bt_grey_normal.png);
+    text-decoration: none;
+}
+.track-button:hover{
+	text-decoration: none;
+	background: url(../images/bt_grey_highlight.png);
+	color: #fff;
+}
